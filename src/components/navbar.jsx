@@ -21,6 +21,7 @@ const Navbar = ({ role }) => {
                         <li className='text-gray-200 hover:text-gray-500 mr-3'><Link to="/manager-dashboard">Manager Dashboard</Link></li>
                         <li className='hover:text-gray-500 mr-3'><Link to="/inventory">Inventory</Link></li>
                         <li className='hover:text-gray-500 mr-3'><Link to="/sales-trends">Trends</Link></li>
+                        <li className='hover:text-gray-500 mr-3'><Link to="/stock_report">Reports</Link></li>
                     </>
                 )}
                 {role === 'employee' && (

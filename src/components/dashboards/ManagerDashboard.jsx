@@ -9,18 +9,14 @@ const ManagerDashboard = () => {
         const fetchDashboardData = async () => {
             try {
                 const [inventoryResponse, salesResponse, trendsResponse] = await Promise.all([
-                    fetch('http://127.0.0.1:8000/accounts/api/inventory/'),
-                    fetch('http://127.0.0.1:8000/accounts/api/sales/'),
-                    fetch('http://127.0.0.1:8000/accounts/api/sales-trends/'),
+                    fetch('http://127.0.0.1:8000/accounts/api/inventory/').then(res => res.json()),
+                    fetch('http://127.0.0.1:8000/accounts/api/sales/').then(res => res.json()),
+                    fetch('http://127.0.0.1:8000/accounts/api/sales-trends/').then(res => res.json()),
                 ]);
 
-                const inventoryData = await inventoryResponse.json();
-                const salesData = await salesResponse.json();
-                const trendsData = await trendsResponse.json();
-
-                setInventory(inventoryData);
-                setSales(salesData);
-                setTrends(trendsData);
+                setInventory(inventoryResponse);
+                setSales(salesResponse);
+                setTrends(trendsResponse);
             } catch (error) {
                 console.error('Error fetching dashboard data:', error);
             }
@@ -53,7 +49,7 @@ const ManagerDashboard = () => {
                     <ul>
                         {sales.map(sale => (
                             <li key={sale.id} className="mb-2">
-                                {sale.productName}: ${sale.amount} on {sale.date}
+                                {sale.productName}: ${sale.price} each, {sale.quantity} sold on {new Date(sale.date).toLocaleDateString()}
                             </li>
                         ))}
                     </ul>
@@ -64,7 +60,7 @@ const ManagerDashboard = () => {
                     <ul>
                         {trends.map(trend => (
                             <li key={trend.item__name} className="mb-2">
-                                {trend.item__name}: {trend.total_quantity} sold, ${trend.total_revenue.toFixed(2)} in revenue
+                                {trend.total_sales} sale, ${trend.total_revenue.toFixed(2)} in revenue within the week
                             </li>
                         ))}
                     </ul>

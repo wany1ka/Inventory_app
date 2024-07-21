@@ -15,6 +15,7 @@ import AdminDashboard from "./components/dashboards/AdminDashboard";
 import ManagerDashboard from "./components/dashboards/ManagerDashboard";
 import EmployeeDashboard from "./components/dashboards/EmployeeDashboard";
 import ContactMessages from "./components/Messages";
+import StockLevelsReport from "./components/StockReport";
 
 const App = () => {
     const [role, setRole] = useState(localStorage.getItem('role'));
@@ -41,6 +42,7 @@ const App = () => {
                 <Route path="/manager-dashboard" element={<ManagerDashboard />} />
                 <Route path="/employee-dashboard" element={<EmployeeDashboard />} />
                 <Route path="/messages" element={<ContactMessages />} />
+                <Route path="/stock_report" element={<StockLevelsReport />} />
                 <Route path="*" element={<ErrorPage />} />
             </Routes>
             <Footer />
