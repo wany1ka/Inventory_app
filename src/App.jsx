@@ -16,6 +16,10 @@ import ManagerDashboard from "./components/dashboards/ManagerDashboard";
 import EmployeeDashboard from "./components/dashboards/EmployeeDashboard";
 import ContactMessages from "./components/Messages";
 import StockLevelsReport from "./components/StockReport";
+import LowStockAlerts from "./components/LowStock";
+import ProfitLossPieChart from "./components/trends/ProfitLossPieChart";
+import SalesBarGraph from "./components/trends/SalesBarGraph";
+import StockPieChart from "./components/trends/StockPieChart";
 
 const App = () => {
     const [role, setRole] = useState(localStorage.getItem('role'));
@@ -34,7 +38,9 @@ const App = () => {
                 <Route path="/" element={<Login setRole={setRole} />} />
                 <Route path="/add" element={<AddInventory />} />
                 <Route path="/register" element={<Register />} />
-                <Route path="/sales-trends" element={<SalesTrends />} />
+                <Route path="/profit_loss" element={<ProfitLossPieChart />} />
+                <Route path="/sales-trends" element={<SalesBarGraph />} />
+                <Route path="/stock-trends" element={<StockPieChart />} />
                 <Route path="/inventory" element={<Inventory />} />
                 <Route path="/sales" element={<Sales />} />
                 <Route path="/contact" element={<ContactForm />} />
@@ -43,6 +49,7 @@ const App = () => {
                 <Route path="/employee-dashboard" element={<EmployeeDashboard />} />
                 <Route path="/messages" element={<ContactMessages />} />
                 <Route path="/stock_report" element={<StockLevelsReport />} />
+                <Route path="/low_stock" element={<LowStockAlerts />} />
                 <Route path="*" element={<ErrorPage />} />
             </Routes>
             <Footer />
