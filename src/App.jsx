@@ -34,24 +34,26 @@ const App = () => {
     return (
         <Router>
             <Navbar role={role} />
-            <Routes>
-                <Route path="/" element={<Login setRole={setRole} />} />
-                <Route path="/add" element={<AddInventory />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/profit_loss" element={<ProfitLossPieChart />} />
-                <Route path="/sales-trends" element={<SalesBarGraph />} />
-                <Route path="/stock-trends" element={<StockPieChart />} />
-                <Route path="/inventory" element={<Inventory />} />
-                <Route path="/sales" element={<Sales />} />
-                <Route path="/contact" element={<ContactForm />} />
-                <Route path="/admin-dashboard" element={<AdminDashboard />} />
-                <Route path="/manager-dashboard" element={<ManagerDashboard />} />
-                <Route path="/employee-dashboard" element={<EmployeeDashboard />} />
-                <Route path="/messages" element={<ContactMessages />} />
-                <Route path="/stock_report" element={<StockLevelsReport />} />
-                <Route path="/low_stock" element={<LowStockAlerts />} />
-                <Route path="*" element={<ErrorPage />} />
-            </Routes>
+            <main className='flex-1 p-6 ml-64'>
+                <Routes>
+                    <Route path="/" element={<Login setRole={setRole} />} />
+                    <Route path="/add" element={<AddInventory />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/profit_loss" element={<ProfitLossPieChart />} />
+                    <Route path="/sales-trends" element={<SalesBarGraph />} />
+                    <Route path="/stock-trends" element={<StockPieChart />} />
+                    <Route path="/inventory" element={<Inventory />} />
+                    <Route path="/sales" element={<Sales />} />
+                    <Route path="/contact" element={<ContactForm />} />
+                    <Route path="/admin-dashboard" element={<AdminDashboard />} />
+                    <Route path="/manager-dashboard" element={<ManagerDashboard />} />
+                    <Route path="/employee-dashboard" element={<EmployeeDashboard />} />
+                    <Route path="/messages" element={<ContactMessages />} />
+                    <Route path="/stock_report" element={<StockLevelsReport />} />
+                    <Route path="/low_stock" element={<LowStockAlerts />} />
+                    <Route path="*" element={<ErrorPage />} />
+                </Routes>
+            </main>
             <Footer />
         </Router>
     );
