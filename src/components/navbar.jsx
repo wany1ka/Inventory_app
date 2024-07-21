@@ -46,6 +46,30 @@ const Navbar = ({ role }) => {
                                 </ul>
                             )}
                         </li>
+                        <li className='relative mb-3'>
+                            <span
+                                onClick={toggleTrendsDropdown}
+                                className='block text-lg font-semibold cursor-pointer transition-all duration-300 ease-in-out hover:text-[#17CF97]'
+                            >
+                                Trends
+                            </span>
+                            {isTrendsDropdownOpen && (
+                                <ul className='absolute left-full top-0 mt-1 w-48 bg-white text-gray-700 shadow-lg rounded'>
+                                    <li className='hover:bg-gray-100'>
+                                        <Link to="/sales-trends" className='block px-4 py-2'>Sales Trends</Link>
+                                    </li>
+                                    <li className='hover:bg-gray-100'>
+                                        <Link to="/stock-trends" className='block px-4 py-2'>Stock Chart</Link>
+                                    </li>
+                                </ul>
+                            )}
+                        </li>
+                        <li className='mb-3'>
+                            <Link to="/stock_report" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#17CF97]'>Reports</Link>
+                        </li>
+                        <li className='mb-3'>
+                            <Link to="/low_stock" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#17CF97]'>Low</Link>
+                        </li>
                         <li className='mb-3'>
                             <Link to="/register" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#17CF97]'>Register</Link>
                         </li>
@@ -57,7 +81,7 @@ const Navbar = ({ role }) => {
                 {role === 'manager' && (
                     <>
                         <li className='mb-3'>
-                            <Link to="/manager-dashboard" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#17CF97]'>Manager Dashboard</Link>
+                            <Link to="/manager-dashboard" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#17CF97] hover:underline underline-offset-2'>Manager Dashboard</Link>
                         </li>
                         <li className='mb-3'>
                             <Link to="/inventory" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#17CF97]'>Inventory</Link>
@@ -91,10 +115,13 @@ const Navbar = ({ role }) => {
                 {role === 'employee' && (
                     <>
                         <li className='mb-3'>
-                            <Link to="/employee-dashboard" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#17CF97]'>Employee Dashboard</Link>
+                            <Link to="/employee-dashboard" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#17CF97] hover:underline underline-offset-2'>Employee Dashboard</Link>
                         </li>
                         <li className='mb-3'>
                             <Link to="/sales" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#17CF97]'>Sales</Link>
+                        </li>
+                        <li className='mb-3'>
+                            <Link to="/inventory" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#17CF97]'>Inventory</Link>
                         </li>
                         <li className='mb-3'>
                             <Link to="/contact" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#17CF97]'>Contact</Link>

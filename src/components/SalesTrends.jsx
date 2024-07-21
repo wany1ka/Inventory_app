@@ -1,4 +1,3 @@
-// SalesTrends.jsx
 import React from 'react';
 import SalesBarGraph from './trends/SalesBarGraph';
 import ProfitLossPieChart from './trends/ProfitLossPieChart';

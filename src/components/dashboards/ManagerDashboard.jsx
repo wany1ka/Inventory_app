@@ -4,8 +4,10 @@ const ManagerDashboard = () => {
     const [inventory, setInventory] = useState([]);
     const [sales, setSales] = useState([]);
     const [trends, setTrends] = useState([]);
+    const [username, setUsername] = useState('');
 
     useEffect(() => {
+        // Fetch dashboard data
         const fetchDashboardData = async () => {
             try {
                 const [inventoryResponse, salesResponse, trendsResponse] = await Promise.all([
@@ -22,14 +24,36 @@ const ManagerDashboard = () => {
             }
         };
 
+        // Fetch user info
+        const fetchUserInfo = async () => {
+            const token = localStorage.getItem('access');
+            try {
+                const response = await fetch('http://127.0.0.1:8000/accounts/api/user-info/', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                setUsername(data.username);
+            } catch (error) {
+                console.error('Error fetching user info:', error);
+            }
+        };
+
         fetchDashboardData();
+        fetchUserInfo();
     }, []);
 
     return (
         <div className="manager-dashboard p-6">
             <header className="mb-8">
-                <h1 className="text-2xl font-bold">Manager Dashboard</h1>
-                <p className="text-gray-600">Welcome to the Manager Dashboard. Here you can manage inventory, view sales, and analyze sales trends.</p>
+                <h1 className="text-2xl font-bold">Welcome, {username}!</h1>
+                <p className="text-gray-600">Welcome, {username}! Welcome to the Manager Dashboard. Here you can manage inventory, view sales, and analyze sales trends.</p>
             </header>
             <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {/* Inventory Status */}

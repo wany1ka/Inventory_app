@@ -1,9 +1,7 @@
-// ProfitLossPieChart.jsx
 import React, { useEffect, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart, ArcElement, Legend, Tooltip } from 'chart.js';
 
-// Register necessary Chart.js components
 Chart.register(ArcElement, Legend, Tooltip);
 
 const ProfitLossPieChart = () => {
