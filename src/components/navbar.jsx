@@ -14,7 +14,7 @@ const Navbar = ({ role }) => {
                 {role === 'admin' && (
                     <>
                         <li className='mb-3'>
-                            <Link to="/admin-dashboard" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#17CF97]'>Admin Dashboard</Link>
+                            <Link to="/admin-dashboard" className='block text-lg font-semibold transition-all duration-300 ease-in-out text-[#ebf2fa] hover:text-white hover:underline underline-offset-4'>Admin Dashboard</Link>
                         </li>
                         <li className='mb-3'>
                             <Link to="/inventory" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#17CF97]'>Inventory</Link>
@@ -42,24 +42,6 @@ const Navbar = ({ role }) => {
                                     </li>
                                     <li className='hover:bg-gray-100'>
                                         <Link to="/profit_loss" className='block px-4 py-2'>Profit Loss</Link>
-                                    </li>
-                                </ul>
-                            )}
-                        </li>
-                        <li className='relative mb-3'>
-                            <span
-                                onClick={toggleTrendsDropdown}
-                                className='block text-lg font-semibold cursor-pointer transition-all duration-300 ease-in-out hover:text-[#17CF97]'
-                            >
-                                Trends
-                            </span>
-                            {isTrendsDropdownOpen && (
-                                <ul className='absolute left-full top-0 mt-1 w-48 bg-white text-gray-700 shadow-lg rounded'>
-                                    <li className='hover:bg-gray-100'>
-                                        <Link to="/sales-trends" className='block px-4 py-2'>Sales Trends</Link>
-                                    </li>
-                                    <li className='hover:bg-gray-100'>
-                                        <Link to="/stock-trends" className='block px-4 py-2'>Stock Chart</Link>
                                     </li>
                                 </ul>
                             )}

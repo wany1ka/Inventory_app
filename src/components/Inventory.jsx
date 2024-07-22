@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import '../styles/Inventory.css';
 
 const Inventory = () => {
     const [inventoryItems, setInventoryItems] = useState([]);
@@ -123,10 +122,10 @@ const Inventory = () => {
     };
 
     return (
-        <div className="inventory-container">
+        <div className="inventory px-9 mx-9">
             <h2 className="font-bold text-2xl mb-6 text-gray-800">Inventory Management</h2>
             <div className="filters-sort-container bg-gray-200 rounded-lg p-4 mb-6">
-                <div className="filters flex flex-wrap mb-4">
+                <div className="filters flex items-center mb-4">
                     <div className="filter-item flex items-center mr-4 mb-2">
                         <label className="text-gray-700 mr-2">Name:</label>
                         <input
@@ -137,27 +136,6 @@ const Inventory = () => {
                             className="border-gray-300 border rounded-lg p-1 w-48"
                         />
                     </div>
-
-                    <div className="filter-item flex items-center mr-4 mb-2">
-                        <label className="text-gray-700 mr-2">Price Range:</label>
-                        <input
-                            type="number"
-                            name="price_min"
-                            value={filters.price_min || ''}
-                            onChange={handleFilterChange}
-                            placeholder="Min"
-                            className="border-gray-300 border rounded-lg p-1 w-24 mr-1"
-                        />
-                        <input
-                            type="number"
-                            name="price_max"
-                            value={filters.price_max || ''}
-                            onChange={handleFilterChange}
-                            placeholder="Max"
-                            className="border-gray-300 border rounded-lg p-1 w-24"
-                        />
-                    </div>
-
                     <div className="filter-item flex items-center mr-4 mb-2">
                         <label className="text-gray-700 mr-2">Stock Range:</label>
                         <input
@@ -177,14 +155,27 @@ const Inventory = () => {
                             className="border-gray-300 border rounded-lg p-1 w-24"
                         />
                     </div>
-                    <button 
-                        onClick={handleExportCSV} 
-                        className="bg-green-500 text-white ml-10 mt-3 py-1 px-2 rounded-md hover:bg-green-700 transition duration-300 mb-4">
-                            Export
-                    </button>
+                    <div className="filter-item flex items-center mr-4 mb-2">
+                        <label className="text-gray-700 mr-2">Price Range:</label>
+                        <input
+                            type="number"
+                            name="price_min"
+                            value={filters.price_min || ''}
+                            onChange={handleFilterChange}
+                            placeholder="Min"
+                            className="border-gray-300 border rounded-lg p-1 w-24 mr-1"
+                        />
+                        <input
+                            type="number"
+                            name="price_max"
+                            value={filters.price_max || ''}
+                            onChange={handleFilterChange}
+                            placeholder="Max"
+                            className="border-gray-300 border rounded-lg p-1 w-24"
+                        />
+                    </div>
                 </div>
-
-                <div className="sort flex items-center">
+                <div className="sort flex items-center mb-4">
                     <label className="text-gray-700 mr-2">Sort By:</label>
                     <select
                         name="sortBy"
@@ -207,84 +198,91 @@ const Inventory = () => {
                         <option value="asc">Ascending</option>
                         <option value="desc">Descending</option>
                     </select>
+                    <button 
+                        onClick={handleExportCSV} 
+                        className="bg-green-500 text-white ml-auto py-1 px-2 rounded-md hover:bg-green-700 transition duration-300">
+                            Export
+                    </button>
                 </div>
             </div>
 
-            <ul className="inventory-list">
-                {inventoryItems.map((item) => (
-                    <li key={item.id} className="inventory-item bg-white shadow-md rounded-lg p-4 mb-4">
-                        <div className="flex justify-between items-center mb-2">
-                            <div className="flex flex-col">
-                                <strong className="text-xl text-gray-800 mb-1">{item.name}</strong>
-                                <span className="text-sm text-gray-600">Quantity: {item.quantity}, Price: ${item.price}</span>
-                            </div>
-                            <div className="flex">
-                                <button onClick={() => handleEdit(item)} className="bg-amber-500 text-white px-2 py-1 rounded-md hover:bg-amber-600 transition duration-300 mr-2">Edit</button>
-                                <button onClick={() => handleDelete(item.id)} className="bg-red-500 text-white px-2 py-1 rounded-md hover:bg-red-600 transition duration-300">Delete</button>
-                            </div>
+            <table className="min-w-full bg-white">
+                <thead className="bg-gray-800 text-white">
+                    <tr>
+                        <th className="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
+                        <th className="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Quantity</th>
+                        <th className="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Price</th>
+                        <th className="text-left py-3 px-4 uppercase font-semibold text-sm">Actions</th>
+                    </tr>
+                </thead>
+                <tbody className="text-gray-700">
+                    {inventoryItems.map((item) => (
+                        <tr key={item.id} className="border-b">
+                            <td className="text-left py-3 px-4">{item.name}</td>
+                            <td className="text-left py-3 px-4">{item.quantity}</td>
+                            <td className="text-left py-3 px-4">${item.price}</td>
+                            <td className="text-left py-3 px-4">
+                                <div className="flex space-x-2">
+                                    <button onClick={() => handleEdit(item)} className="bg-amber-500 text-white px-2 py-1 rounded-md hover:bg-amber-600 transition duration-300">Edit</button>
+                                    <button onClick={() => handleDelete(item.id)} className="bg-red-500 text-white px-2 py-1 rounded-md hover:bg-red-600 transition duration-300">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+
+            {editingItem && (
+                <div className="edit-form-container mt-4 bg-gray-100 p-4 rounded-lg">
+                    <h3 className="font-bold text-xl mb-2">Edit Item</h3>
+                    <form onSubmit={handleEditSubmit}>
+                        <div className="mb-2">
+                            <label className="block text-gray-700 mb-1">Name:</label>
+                            <input
+                                type="text"
+                                name="name"
+                                value={editFormData.name}
+                                onChange={handleEditChange}
+                                className="border-gray-300 border rounded-lg p-1 w-full"
+                            />
                         </div>
-                        
-                        {editingItem && editingItem.id === item.id && (
-                            <div className="edit-form-container bg-gray-100 p-4 rounded-md mt-4">
-                                <h3 className="font-bold text-lg mb-2 text-gray-800">Edit Inventory Item</h3>
-                                <form onSubmit={handleEditSubmit}>
-                                    <div className="form-group mb-2">
-                                        <label className="block mb-1 text-gray-700">Name:</label>
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            value={editFormData.name}
-                                            onChange={handleEditChange}
-                                            className="border-gray-300 border rounded-lg p-1 w-full"
-                                            required
-                                        />
-                                    </div>
-                                    <div className="form-group mb-2">
-                                        <label className="block mb-1 text-gray-700">Description:</label>
-                                        <textarea
-                                            name="description"
-                                            value={editFormData.description}
-                                            onChange={handleEditChange}
-                                            className="border-gray-300 border rounded-lg p-1 w-full"
-                                        ></textarea>
-                                    </div>
-                                    <div className="form-group mb-2">
-                                        <label className="block mb-1 text-gray-700">Quantity:</label>
-                                        <input
-                                            type="number"
-                                            name="quantity"
-                                            value={editFormData.quantity}
-                                            onChange={handleEditChange}
-                                            className="border-gray-300 border rounded-lg p-1 w-full"
-                                            required
-                                        />
-                                    </div>
-                                    <div className="form-group mb-2">
-                                        <label className="block mb-1 text-gray-700">Price:</label>
-                                        <input
-                                            type="number"
-                                            step="0.01"
-                                            name="price"
-                                            value={editFormData.price}
-                                            onChange={handleEditChange}
-                                            className="border-gray-300 border rounded-lg p-1 w-full"
-                                            required
-                                        />
-                                    </div>
-                                    <div className="flex">
-                                        <button type="submit" className="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition duration-300">
-                                            Save Changes
-                                        </button>
-                                        <button type="button" onClick={() => setEditingItem(null)} className="bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600 transition duration-300 ml-2">
-                                            Cancel
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        )}
-                    </li>
-                ))}
-            </ul>
+                        <div className="mb-2">
+                            <label className="block text-gray-700 mb-1">Description:</label>
+                            <input
+                                type="text"
+                                name="description"
+                                value={editFormData.description}
+                                onChange={handleEditChange}
+                                className="border-gray-300 border rounded-lg p-1 w-full"
+                            />
+                        </div>
+                        <div className="mb-2">
+                            <label className="block text-gray-700 mb-1">Quantity:</label>
+                            <input
+                                type="number"
+                                name="quantity"
+                                value={editFormData.quantity}
+                                onChange={handleEditChange}
+                                className="border-gray-300 border rounded-lg p-1 w-full"
+                            />
+                        </div>
+                        <div className="mb-2">
+                            <label className="block text-gray-700 mb-1">Price:</label>
+                            <input
+                                type="number"
+                                name="price"
+                                value={editFormData.price}
+                                onChange={handleEditChange}
+                                className="border-gray-300 border rounded-lg p-1 w-full"
+                            />
+                        </div>
+                        <div className="flex space-x-2">
+                            <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">Save</button>
+                            <button onClick={() => setEditingItem(null)} className="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition duration-300">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            )}
         </div>
     );
 };
