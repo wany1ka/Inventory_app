@@ -29,20 +29,20 @@ const ContactMessages = () => {
     return (
         <div className="max-w-3xl mx-auto mt-8 mx-10">
             <h2 className="text-2xl font-bold mb-4">Contact Messages</h2>
-            <ul className="divide-y divide-gray-300">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {messages.map(message => (
-                    <li key={message.id} className="py-4">
+                    <div key={message.id} className="p-4 border border-gray-300 rounded-lg bg-white shadow-sm">
                         <div className="space-y-2">
                             <div>
                                 <strong className="font-semibold">Name:</strong> {message.name}
                             </div>
                             <div>
-                                <strong className="font-semibold">Email:</strong> <a className='hover:text-sky-500' href={`mailto:${message.email}`}>{message.email}</a><br />
+                                <strong className="font-semibold">Email:</strong> <a className='hover:text-sky-500' href={`mailto:${message.email}`}>{message.email}</a>
                             </div>
                             <div>
                                 {message.phone &&
                                     <>
-                                        <strong className="font-semibold">Phone:</strong> <a className='hover:text-sky-500' href={`tel:${message.phone}`}>{message.phone}</a><br />
+                                        <strong className="font-semibold">Phone:</strong> <a className='hover:text-sky-500' href={`tel:${message.phone}`}>{message.phone}</a>
                                     </>
                                 }
                             </div>
@@ -53,9 +53,9 @@ const ContactMessages = () => {
                                 Sent at: {new Date(message.created_at).toLocaleString()}
                             </div>
                         </div>
-                    </li>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 };

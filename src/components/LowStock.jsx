@@ -41,11 +41,11 @@ const LowStockAlerts = () => {
                 <ul>
                     {lowStockItems.map(item => (
                         <li key={item.id} className="mb-2">
-                            <strong>{item.name}:</strong> {item.quantity} in stock
+                            <strong>{item.name}:</strong> <i className='text-[#a50104]'>{item.quantity}</i> in stock
                         </li>
                     ))}
                 </ul>
-                <button onClick={sendEmail} className="mt-4 bg-blue-500 text-white py-2 px-4 rounded">
+                <button onClick={sendEmail} className="mt-4 bg-[#1f7a8c] hover:bg-[#053c5e] text-white py-2 px-4 rounded">
                     Send Low Stock Email
                 </button>
                 {message && <p className="mt-4">{message}</p>}

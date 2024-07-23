@@ -9,26 +9,26 @@ const Navbar = ({ role }) => {
     };
 
     return (
-        <nav className='w-64 bg-[#1B2430] text-white shadow-md h-screen fixed top-0 left-0'>
+        <nav className='w-64 bg-[#064789] text-[#ebf2fa] shadow-md h-screen fixed top-0 left-0'>
             <ul className='flex flex-col p-5'>
                 {role === 'admin' && (
                     <>
                         <li className='mb-3'>
-                            <Link to="/admin-dashboard" className='block text-lg font-semibold transition-all duration-300 ease-in-out text-[#ebf2fa] hover:text-white hover:underline underline-offset-4'>Admin Dashboard</Link>
+                            <Link to="/admin-dashboard" className='block text-lg font-semibold transition-all duration-300 ease-in-out text-[#ebf2fa] hover:text-[#93e1d8] underline underline-offset-4'>Admin Dashboard</Link>
                         </li>
                         <li className='mb-3'>
-                            <Link to="/inventory" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#17CF97]'>Inventory</Link>
+                            <Link to="/inventory" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8]'>Inventory</Link>
                         </li>
                         <li className='mb-3'>
-                            <Link to="/activity" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#17CF97]'>Activity</Link>
+                            <Link to="/activity" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8]'>Activity</Link>
                         </li>
                         <li className='mb-3'>
-                            <Link to="/sales" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#17CF97]'>Sales</Link>
+                            <Link to="/sales" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8]'>Sales</Link>
                         </li>
                         <li className='relative mb-3'>
                             <span
                                 onClick={toggleTrendsDropdown}
-                                className='block text-lg font-semibold cursor-pointer transition-all duration-300 ease-in-out hover:text-[#17CF97]'
+                                className='block text-lg font-semibold cursor-pointer transition-all duration-300 ease-in-out hover:text-[#93e1d8]'
                             >
                                 Trends
                             </span>
@@ -47,31 +47,31 @@ const Navbar = ({ role }) => {
                             )}
                         </li>
                         <li className='mb-3'>
-                            <Link to="/stock_report" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#17CF97]'>Reports</Link>
+                            <Link to="/stock_report" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8]'>Reports</Link>
                         </li>
                         <li className='mb-3'>
-                            <Link to="/low_stock" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#17CF97]'>Low</Link>
+                            <Link to="/low_stock" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8]'>Low</Link>
                         </li>
                         <li className='mb-3'>
-                            <Link to="/register" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#17CF97]'>Register</Link>
+                            <Link to="/register" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8]'>Register</Link>
                         </li>
                         <li className='mb-3'>
-                            <Link to="/messages" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#17CF97]'>Messages</Link>
+                            <Link to="/messages" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8]'>Messages</Link>
                         </li>
                     </>
                 )}
                 {role === 'manager' && (
                     <>
                         <li className='mb-3'>
-                            <Link to="/manager-dashboard" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#17CF97] hover:underline underline-offset-2'>Manager Dashboard</Link>
+                            <Link to="/manager-dashboard" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8] hover:underline underline-offset-2'>Manager Dashboard</Link>
                         </li>
                         <li className='mb-3'>
-                            <Link to="/inventory" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#17CF97]'>Inventory</Link>
+                            <Link to="/inventory" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8]'>Inventory</Link>
                         </li>
                         <li className='relative mb-3'>
                             <span
                                 onClick={toggleTrendsDropdown}
-                                className='block text-lg font-semibold cursor-pointer transition-all duration-300 ease-in-out hover:text-[#17CF97]'
+                                className='block text-lg font-semibold cursor-pointer transition-all duration-300 ease-in-out hover:text-[#93e1d8]'
                             >
                                 Trends
                             </span>
@@ -87,26 +87,26 @@ const Navbar = ({ role }) => {
                             )}
                         </li>
                         <li className='mb-3'>
-                            <Link to="/stock_report" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#17CF97]'>Reports</Link>
+                            <Link to="/stock_report" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8]'>Reports</Link>
                         </li>
                         <li className='mb-3'>
-                            <Link to="/low_stock" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#17CF97]'>Low</Link>
+                            <Link to="/low_stock" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8]'>Low</Link>
                         </li>
                     </>
                 )}
                 {role === 'employee' && (
                     <>
                         <li className='mb-3'>
-                            <Link to="/employee-dashboard" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#17CF97] hover:underline underline-offset-2'>Employee Dashboard</Link>
+                            <Link to="/employee-dashboard" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8] hover:underline underline-offset-2'>Employee Dashboard</Link>
                         </li>
                         <li className='mb-3'>
-                            <Link to="/sales" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#17CF97]'>Sales</Link>
+                            <Link to="/sales" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8]'>Sales</Link>
                         </li>
                         <li className='mb-3'>
-                            <Link to="/inventory" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#17CF97]'>Inventory</Link>
+                            <Link to="/inventory" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8]'>Inventory</Link>
                         </li>
                         <li className='mb-3'>
-                            <Link to="/contact" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#17CF97]'>Contact</Link>
+                            <Link to="/contact" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8]'>Contact</Link>
                         </li>
                     </>
                 )}

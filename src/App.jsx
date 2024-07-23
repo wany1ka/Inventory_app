@@ -20,6 +20,9 @@ import LowStockAlerts from "./components/LowStock";
 import ProfitLossPieChart from "./components/trends/ProfitLossPieChart";
 import SalesBarGraph from "./components/trends/SalesBarGraph";
 import StockPieChart from "./components/trends/StockPieChart";
+import About from "./components/About";
+import PrivacyPolicy from "./components/PrivacyPolicy";
+import TermsAndConditions from "./components/TermsConditions";
 
 const App = () => {
     const [role, setRole] = useState(localStorage.getItem('role'));
@@ -34,7 +37,7 @@ const App = () => {
     return (
         <Router>
             <Navbar role={role} />
-            <main className='flex-1 p-6 ml-64'>
+            <main className='flex-1 p-6 '>
                 <Routes>
                     <Route path="/" element={<Login setRole={setRole} />} />
                     <Route path="/add" element={<AddInventory />} />
@@ -51,10 +54,13 @@ const App = () => {
                     <Route path="/messages" element={<ContactMessages />} />
                     <Route path="/stock_report" element={<StockLevelsReport />} />
                     <Route path="/low_stock" element={<LowStockAlerts />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                    <Route path="/terms-conditions" element={<TermsAndConditions />} />
                     <Route path="*" element={<ErrorPage />} />
                 </Routes>
-            </main>
             <Footer />
+            </main>
         </Router>
     );
 };

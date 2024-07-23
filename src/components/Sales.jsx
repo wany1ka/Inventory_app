@@ -107,22 +107,32 @@ const Sales = () => {
                     <label className="block text-gray-700">Date:</label>
                     <input type="date" name="date" value={formData.date} onChange={handleChange} className="border-gray-300 border p-2 rounded-md w-full mt-2" required />
                 </div>
-                <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">Record Sale</button>
+                <button type="submit" className="bg-[#064789] text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">Record Sale</button>
             </form>
             {message && <p className="text-green-500 mb-4">{message}</p>}
             <h3 className="font-bold text-xl mb-4">Sales List</h3>
-            <ul className="sales-list bg-white shadow-md rounded-lg p-4">
-                {sales.map((sale) => (
-                    <li key={sale.id} className="sales-item mb-4 p-4 border-b border-gray-200">
-                        <div className="sales-item-details">
-                            <strong className="block text-lg">{sale.item.name}</strong>
-                            <span className="block">Quantity: {sale.quantity}</span>
-                            <span className="block">Price: ${sale.price}</span>
-                            <span className="block">Date: {sale.date}</span>
-                        </div>
-                    </li>
-                ))}
-            </ul>
+            <div className="sales-table-container bg-white shadow-md rounded-lg p-4">
+                <table className="min-w-full bg-white border border-gray-200">
+                    <thead>
+                        <tr className="border-b border-gray-200">
+                            <th className="py-2 px-4 text-left">Product Name</th>
+                            <th className="py-2 px-4 text-left">Quantity</th>
+                            <th className="py-2 px-4 text-left">Price</th>
+                            <th className="py-2 px-4 text-left">Date & Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {sales.map((sale) => (
+                            <tr key={sale.id} className="border-b border-gray-200">
+                                <td className="py-2 px-4">{sale.productName || 'N/A'}</td>
+                                <td className="py-2 px-4">{sale.quantity}</td>
+                                <td className="py-2 px-4">${sale.price}</td>
+                                <td className="py-2 px-4">{new Date(sale.date).toLocaleString()}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };
