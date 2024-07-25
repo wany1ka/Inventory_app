@@ -73,7 +73,7 @@ const ManagerDashboard = () => {
                     <ul>
                         {sales.map(sale => (
                             <li key={sale.id} className="mb-2">
-                                {sale.productName}: ${sale.price} each, {sale.quantity} sold on {new Date(sale.date).toLocaleDateString()}
+                                {sale.productName}: Kes {sale.price} each, {sale.quantity} sold on {new Date(sale.date).toLocaleDateString()}
                             </li>
                         ))}
                     </ul>
@@ -84,7 +84,7 @@ const ManagerDashboard = () => {
                     <ul>
                         {trends.map(trend => (
                             <li key={trend.item__name} className="mb-2">
-                                {trend.total_sales} sale, ${trend.total_revenue.toFixed(2)} in revenue within the week
+                                {trend.total_sales} sale, Kes {trend.total_revenue.toFixed(2)} in revenue within the week
                             </li>
                         ))}
                     </ul>

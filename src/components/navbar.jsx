@@ -20,9 +20,6 @@ const Navbar = ({ role }) => {
                             <Link to="/inventory" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8]'>Inventory</Link>
                         </li>
                         <li className='mb-3'>
-                            <Link to="/activity" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8]'>Activity</Link>
-                        </li>
-                        <li className='mb-3'>
                             <Link to="/sales" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8]'>Sales</Link>
                         </li>
                         <li className='relative mb-3'>
@@ -50,7 +47,7 @@ const Navbar = ({ role }) => {
                             <Link to="/stock_report" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8]'>Reports</Link>
                         </li>
                         <li className='mb-3'>
-                            <Link to="/low_stock" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8]'>Low</Link>
+                            <Link to="/low_stock" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8]'>Low Stock</Link>
                         </li>
                         <li className='mb-3'>
                             <Link to="/register" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8]'>Register</Link>

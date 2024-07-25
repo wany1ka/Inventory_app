@@ -222,7 +222,7 @@ const Inventory = () => {
                             <tr className="border-b">
                                 <td className="text-left py-3 px-4 text-[#000000]">{item.name}</td>
                                 <td className="text-left py-3 px-4">{item.quantity}</td>
-                                <td className="text-left py-3 px-4">${item.price}</td>
+                                <td className="text-left py-3 px-4">Kes {item.price}</td>
                                 <td className="text-left py-3 px-4">{new Date(item.last_updated).toLocaleString()}</td>
                                 <td className="text-left py-3 px-4">
                                     <div className="flex space-x-2">

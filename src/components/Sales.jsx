@@ -126,7 +126,7 @@ const Sales = () => {
                             <tr key={sale.id} className="border-b border-gray-200">
                                 <td className="py-2 px-4">{sale.productName || 'N/A'}</td>
                                 <td className="py-2 px-4">{sale.quantity}</td>
-                                <td className="py-2 px-4">${sale.price}</td>
+                                <td className="py-2 px-4">Kes {sale.price}</td>
                                 <td className="py-2 px-4">{new Date(sale.date).toLocaleString()}</td>
                             </tr>
                         ))}
