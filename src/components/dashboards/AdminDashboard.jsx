@@ -31,7 +31,7 @@ const AdminDashboard = () => {
         const fetchUsers = async () => {
             const token = localStorage.getItem('access');
             try {
-                const response = await fetch(`${BASE_URL}/api/users/`, {
+                const response = await fetch(`${BASE_URL}api/users/`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,
