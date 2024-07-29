@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart, ArcElement, Legend, Tooltip } from 'chart.js';
+import BASE_URL from '../../../config';
+
 
 Chart.register(ArcElement, Legend, Tooltip);
 
@@ -15,7 +17,7 @@ const ProfitLossPieChart = () => {
 
     const fetchSales = async () => {
         try {
-            const response = await fetch('http://127.0.0.1:8000/accounts/api/sales/');
+            const response = await fetch(`${BASE_URL}api/sales/`);
             if (!response.ok) {
                 throw new Error('Error fetching sales');
             }
@@ -28,7 +30,7 @@ const ProfitLossPieChart = () => {
 
     const fetchInventoryItems = async () => {
         try {
-            const response = await fetch('http://127.0.0.1:8000/accounts/api/inventory/');
+            const response = await fetch(`${BASE_URL}api/inventory/`);
             if (!response.ok) {
                 throw new Error('Error fetching inventory items');
             }

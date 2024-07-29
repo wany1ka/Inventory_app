@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/Sales.css';
+import BASE_URL from '../../config.js';
 
 const Sales = () => {
     const [sales, setSales] = useState([]);
@@ -11,6 +12,7 @@ const Sales = () => {
         date: ''
     });
     const [message, setMessage] = useState('');
+    const [showForm, setShowForm] = useState(false);
 
     useEffect(() => {
         fetchSales();
@@ -19,12 +21,14 @@ const Sales = () => {
 
     const fetchSales = async () => {
         try {
-            const response = await fetch('http://127.0.0.1:8000/accounts/api/sales/');
+            const response = await fetch(`${BASE_URL}api/sales/`);
             if (!response.ok) {
                 throw new Error('Failed to fetch sales');
             }
             const data = await response.json();
-            setSales(data);
+            // Sort the sales data by date in descending order
+            const sortedSales = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+            setSales(sortedSales);
         } catch (error) {
             console.error('Error fetching sales:', error);
         }
@@ -32,7 +36,7 @@ const Sales = () => {
 
     const fetchInventoryItems = async () => {
         try {
-            const response = await fetch('http://127.0.0.1:8000/accounts/api/inventory/');
+            const response = await fetch(`${BASE_URL}api/inventory/`);
             if (!response.ok) {
                 throw new Error('Failed to fetch inventory items');
             }
@@ -53,7 +57,7 @@ const Sales = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://127.0.0.1:8000/accounts/api/sales/', {
+            const response = await fetch(`${BASE_URL}api/sales/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -85,30 +89,38 @@ const Sales = () => {
     return (
         <div className="sales-container p-4">
             <h2 className="font-bold text-2xl mb-4">Sales Management</h2>
-            <form onSubmit={handleSubmit} className="sales-form bg-white shadow-md rounded-lg p-6 mb-6">
-                <div className="form-group mb-4">
-                    <label className="block text-gray-700">Item:</label>
-                    <select name="item" value={formData.item} onChange={handleChange} className="border-gray-300 border p-2 rounded-md w-full mt-2" required>
-                        <option value="">Select an item</option>
-                        {inventoryItems.map((item) => (
-                            <option key={item.id} value={item.id}>{item.name}</option>
-                        ))}
-                    </select>
-                </div>
-                <div className="form-group mb-4">
-                    <label className="block text-gray-700">Quantity:</label>
-                    <input type="number" name="quantity" value={formData.quantity} onChange={handleChange} className="border-gray-300 border p-2 rounded-md w-full mt-2" required />
-                </div>
-                <div className="form-group mb-4">
-                    <label className="block text-gray-700">Price:</label>
-                    <input type="number" step="0.01" name="price" value={formData.price} onChange={handleChange} className="border-gray-300 border p-2 rounded-md w-full mt-2" required />
-                </div>
-                <div className="form-group mb-4">
-                    <label className="block text-gray-700">Date:</label>
-                    <input type="date" name="date" value={formData.date} onChange={handleChange} className="border-gray-300 border p-2 rounded-md w-full mt-2" required />
-                </div>
-                <button type="submit" className="bg-[#064789] text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">Record Sale</button>
-            </form>
+            <button 
+                onClick={() => setShowForm(!showForm)} 
+                className="bg-[#064789] text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300 mb-4"
+            >
+                {showForm ? "Hide Sale Form" : "Show Sale Form"}
+            </button>
+            {showForm && (
+                <form onSubmit={handleSubmit} className="sales-form bg-white shadow-md rounded-lg p-6 mb-6">
+                    <div className="form-group mb-4">
+                        <label className="block text-gray-700">Item:</label>
+                        <select name="item" value={formData.item} onChange={handleChange} className="border-gray-300 border p-2 rounded-md w-full mt-2" required>
+                            <option value="">Select an item</option>
+                            {inventoryItems.map((item) => (
+                                <option key={item.id} value={item.id}>{item.name}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="form-group mb-4">
+                        <label className="block text-gray-700">Quantity:</label>
+                        <input type="number" name="quantity" value={formData.quantity} onChange={handleChange} className="border-gray-300 border p-2 rounded-md w-full mt-2" required />
+                    </div>
+                    <div className="form-group mb-4">
+                        <label className="block text-gray-700">Price:</label>
+                        <input type="number" step="0.01" name="price" value={formData.price} onChange={handleChange} className="border-gray-300 border p-2 rounded-md w-full mt-2" required />
+                    </div>
+                    <div className="form-group mb-4">
+                        <label className="block text-gray-700">Date:</label>
+                        <input type="date" name="date" value={formData.date} onChange={handleChange} className="border-gray-300 border p-2 rounded-md w-full mt-2" required />
+                    </div>
+                    <button type="submit" className="bg-[#064789] text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">Record Sale</button>
+                </form>
+            )}
             {message && <p className="text-green-500 mb-4">{message}</p>}
             <h3 className="font-bold text-xl mb-4">Sales List</h3>
             <div className="sales-table-container bg-white shadow-md rounded-lg p-4">

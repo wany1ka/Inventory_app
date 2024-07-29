@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import BASE_URL from '../../config.js';
 
 const LowStockAlerts = () => {
     const [lowStockItems, setLowStockItems] = useState([]);
@@ -7,7 +8,7 @@ const LowStockAlerts = () => {
     useEffect(() => {
         const fetchLowStockAlerts = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8000/accounts/reports/low-stock-alerts/');
+                const response = await fetch(`${BASE_URL}reports/low-stock-alerts/`);
                 const data = await response.json();
                 setLowStockItems(data);
             } catch (error) {
@@ -20,7 +21,7 @@ const LowStockAlerts = () => {
 
     const sendEmail = async () => {
         try {
-            const response = await fetch('http://127.0.0.1:8000/accounts/reports/low-stock-alerts/', {
+            const response = await fetch(`${BASE_URL}reports/low-stock-alerts/`, {
                 method: 'POST',
             });
             const data = await response.json();

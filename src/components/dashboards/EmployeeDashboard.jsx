@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import BASE_URL from '../../../config';
 
 const Dashboard = () => {
     const [username, setUsername] = useState('');
@@ -10,7 +11,7 @@ const Dashboard = () => {
         const fetchUserInfo = async () => {
             const token = localStorage.getItem('access');
             try {
-                const response = await fetch('http://127.0.0.1:8000/accounts/api/user-info/', {
+                const response = await fetch(`${BASE_URL}api/user-info/`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,
@@ -59,7 +60,7 @@ const Dashboard = () => {
     useEffect(() => {
         const fetchLowStockAlerts = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8000/accounts/reports/low-stock-alerts/');
+                const response = await fetch(`${BASE_URL}reports/low-stock-alerts/`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -82,7 +83,6 @@ const Dashboard = () => {
 
         fetchLowStockAlerts();
 
-        // Polling for updates (optional)
         const interval = setInterval(fetchLowStockAlerts, 43200000); // Check every 12hrs
 
         return () => clearInterval(interval);

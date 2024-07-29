@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { Chart, CategoryScale, LinearScale, BarElement, Legend, Tooltip } from 'chart.js';
+import BASE_URL from '../../../config';
+
 
 // Register necessary Chart.js components
 Chart.register(CategoryScale, LinearScale, BarElement, Legend, Tooltip);
@@ -14,7 +16,7 @@ const SalesBarGraph = () => {
 
     const fetchSales = async () => {
         try {
-            const response = await fetch('http://127.0.0.1:8000/accounts/api/sales/');
+            const response = await fetch(`${BASE_URL}api/sales/`);
             if (!response.ok) {
                 throw new Error('Error fetching sales');
             }

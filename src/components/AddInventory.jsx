@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/AddInventory.css';
+import BASE_URL from '../../config.js';
 
 const AddInventory = () => {
   const [formData, setFormData] = useState({
@@ -22,7 +23,7 @@ const AddInventory = () => {
     e.preventDefault();
     setSuccess(false);
     try {
-      const response = await fetch('http://127.0.0.1:8000/accounts/api/inventory/', {
+      const response = await fetch(`${BASE_URL}api/inventory/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

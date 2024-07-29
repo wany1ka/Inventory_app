@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart, ArcElement, Legend, Tooltip } from 'chart.js';
+import BASE_URL from '../../../config';
 
 // Register necessary Chart.js components
 Chart.register(ArcElement, Legend, Tooltip);
@@ -14,7 +15,7 @@ const StockPieChart = () => {
 
     const fetchInventoryItems = async () => {
         try {
-            const response = await fetch('http://127.0.0.1:8000/accounts/api/inventory/');
+            const response = await fetch(`${BASE_URL}api/inventory/`);
             if (!response.ok) {
                 throw new Error('Error fetching inventory items');
             }

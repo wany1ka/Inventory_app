@@ -6,7 +6,7 @@ const StockLevelsReport = () => {
     useEffect(() => {
         const fetchStockLevels = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8000/accounts/reports/stock-levels/');
+                const response = await fetch(`${BASE_URL}reports/stock-levels/`);
                 const data = await response.json();
                 setInventoryItems(data);
             } catch (error) {

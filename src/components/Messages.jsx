@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import BASE_URL from '../../config.js';
 
 const ContactMessages = () => {
     const [messages, setMessages] = useState([]);
@@ -7,7 +8,7 @@ const ContactMessages = () => {
     useEffect(() => {
         const fetchMessages = async () => {
             try {
-                const response = await fetch('http://localhost:8000/accounts/api/contact/');
+                const response = await fetch(`${BASE_URL}api/contact/`);
                 if (!response.ok) {
                     throw new Error('Error fetching messages');
                 }

@@ -20,6 +20,9 @@ const Navbar = ({ role }) => {
                             <Link to="/inventory" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8]'>Inventory</Link>
                         </li>
                         <li className='mb-3'>
+                            <Link to="/add_inventory" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8]'>Add Stock</Link>
+                        </li>
+                        <li className='mb-3'>
                             <Link to="/sales" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8]'>Sales</Link>
                         </li>
                         <li className='relative mb-3'>
@@ -63,6 +66,9 @@ const Navbar = ({ role }) => {
                             <Link to="/manager-dashboard" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8] hover:underline underline-offset-2'>Manager Dashboard</Link>
                         </li>
                         <li className='mb-3'>
+                            <Link to="/add_inventory" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8]'>Add Stock</Link>
+                        </li>
+                        <li className='mb-3'>
                             <Link to="/inventory" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8]'>Inventory</Link>
                         </li>
                         <li className='relative mb-3'>
@@ -98,6 +104,9 @@ const Navbar = ({ role }) => {
                         </li>
                         <li className='mb-3'>
                             <Link to="/sales" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8]'>Sales</Link>
+                        </li>
+                        <li className='mb-3'>
+                            <Link to="/add_inventory" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8]'>Add Stock</Link>
                         </li>
                         <li className='mb-3'>
                             <Link to="/inventory" className='block text-lg font-semibold transition-all duration-300 ease-in-out hover:text-[#93e1d8]'>Inventory</Link>

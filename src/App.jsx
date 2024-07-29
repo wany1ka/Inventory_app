@@ -46,6 +46,7 @@ const App = () => {
                     <Route path="/sales-trends" element={<SalesBarGraph />} />
                     <Route path="/stock-trends" element={<StockPieChart />} />
                     <Route path="/inventory" element={<Inventory />} />
+                    <Route path="/add_inventory" element={<AddInventory />} />
                     <Route path="/sales" element={<Sales />} />
                     <Route path="/contact" element={<ContactForm />} />
                     <Route path="/admin-dashboard" element={<AdminDashboard />} />

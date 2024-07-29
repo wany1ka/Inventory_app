@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import BASE_URL from '../../config.js';
+
 
 const Inventory = () => {
     const [inventoryItems, setInventoryItems] = useState([]);
@@ -37,7 +39,7 @@ const Inventory = () => {
 
             const queryString = new URLSearchParams(filteredParams).toString();
 
-            const response = await fetch(`http://127.0.0.1:8000/accounts/api/inventory/?${queryString}`);
+            const response = await fetch(`${BASE_URL}api/inventory/?${queryString}`);
             if (!response.ok) {
                 throw new Error('Error fetching inventory items');
             }
@@ -51,7 +53,7 @@ const Inventory = () => {
     const handleDelete = async (id) => {
         if (window.confirm('Are you sure you want to delete this item?')) {
             try {
-                const response = await fetch(`http://127.0.0.1:8000/accounts/api/inventory/${id}/`, {
+                const response = await fetch(`${BASE_URL}api/inventory/${id}/`, {
                     method: 'DELETE',
                 });
                 if (!response.ok) {
@@ -85,7 +87,7 @@ const Inventory = () => {
     const handleEditSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`http://127.0.0.1:8000/accounts/api/inventory/${editingItem.id}/`, {
+            const response = await fetch(`${BASE_URL}api/inventory/${editingItem.id}/`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -118,7 +120,7 @@ const Inventory = () => {
     };
 
     const handleExportCSV = () => {
-        window.location.href = 'http://127.0.0.1:8000/accounts/api/export-inventory/';
+        window.location.href = `${BASE_URL}api/export-inventory/`;
     };
 
     return (

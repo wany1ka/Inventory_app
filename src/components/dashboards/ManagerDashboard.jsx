@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import BASE_URL from '../../../config';
 
 const ManagerDashboard = () => {
     const [inventory, setInventory] = useState([]);
@@ -11,9 +12,9 @@ const ManagerDashboard = () => {
         const fetchDashboardData = async () => {
             try {
                 const [inventoryResponse, salesResponse, trendsResponse] = await Promise.all([
-                    fetch('http://127.0.0.1:8000/accounts/api/inventory/').then(res => res.json()),
-                    fetch('http://127.0.0.1:8000/accounts/api/sales/').then(res => res.json()),
-                    fetch('http://127.0.0.1:8000/accounts/api/sales-trends/').then(res => res.json()),
+                    fetch(`${BASE_URL}api/inventory/`).then(res => res.json()),
+                    fetch(`${BASE_URL}api/sales/`).then(res => res.json()),
+                    fetch(`${BASE_URL}api/sales-trends/`).then(res => res.json()),
                 ]);
 
                 setInventory(inventoryResponse);
@@ -28,7 +29,7 @@ const ManagerDashboard = () => {
         const fetchUserInfo = async () => {
             const token = localStorage.getItem('access');
             try {
-                const response = await fetch('http://127.0.0.1:8000/accounts/api/user-info/', {
+                const response = await fetch(`${BASE_URL}api/user-info/`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,
