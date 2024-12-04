@@ -6,7 +6,6 @@ import Register from "./components/Register";
 import Navbar from './components/navbar';
 import Footer from "./components/Footer";
 import ErrorPage from "./components/Error-page";
-import SalesTrends from "./components/SalesTrends";
 import AddInventory from "./components/AddInventory";
 import Sales from "./components/Sales";
 import ContactForm from "./components/ContactForm";
@@ -37,7 +36,7 @@ const App = () => {
     return (
         <Router>
             <Navbar role={role} />
-            <main className='flex-1 p-6 '>
+            <main className='flex-1 p-6'>
                 <Routes>
                     <Route path="/" element={<Login setRole={setRole} />} />
                     <Route path="/add" element={<AddInventory />} />

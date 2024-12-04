@@ -53,7 +53,7 @@ const AdminDashboard = () => {
     }, []);
 
     return (
-        <div className="admin-dashboard p-4 md:p-6 bg-gray-100 min-h-screen">
+        <div className="admin-dashboard p-4 md:p-6 min-h-screen">
             <header className="admin-dashboard-header bg-white shadow p-4 md:p-6 mb-6 md:mb-8 rounded-lg">
                 <h1 className="text-xl md:text-3xl font-semibold mb-2">Welcome, {username}!</h1>
                 <p className="text-sm md:text-gray-600">Welcome to the Admin Dashboard. Here you can manage users and perform administrative tasks.</p>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import BASE_URL from '../../config';
 
 const StockLevelsReport = () => {
     const [inventoryItems, setInventoryItems] = useState([]);

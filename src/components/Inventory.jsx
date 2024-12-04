@@ -126,7 +126,7 @@ const Inventory = () => {
     return (
         <div className="inventory px-9 mx-9">
             <h2 className="font-bold text-2xl mb-6">Inventory Management</h2>
-            <div className="filters-sort-container bg-gray-100 rounded-lg p-4 mb-6">
+            <div className="filters-sort-container rounded-lg p-4 mb-6">
                 <div className="filters flex items-center mb-4">
                     <div className="filter-item flex items-center mr-4 mb-2">
                         <label className="text-gray-700 mr-2">Name:</label>
@@ -235,7 +235,7 @@ const Inventory = () => {
                             </tr>
                             {editingItem && editingItem.id === item.id && (
                                 <tr>
-                                    <td colSpan="6" className="p-4 bg-gray-100">
+                                    <td colSpan="6" className="p-4 ">
                                         <div className="edit-form-container">
                                             <h3 className="font-bold text-xl mb-2">Edit Item</h3>
                                             <form onSubmit={handleEditSubmit}>
